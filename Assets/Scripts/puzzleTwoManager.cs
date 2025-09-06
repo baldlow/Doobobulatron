@@ -1,15 +1,13 @@
 using UnityEngine;
 
-public class puzzleOneManager : MonoBehaviour
+public class puzzleTwoManager : MonoBehaviour
 {
-    public float timeLimit = 6f; // Time limit in seconds
+    public float timeLimit = 15f; // Time limit in seconds
     public bool allowReset = true; // puzzle will be invoked to reset, controller prevents invoke from happnening
     private float timer; // tracks time remaining
-    public bool puzzleCompleted = false; // tracks if puzzle is completed
-    private bool puzzleActive = false; // tracks that the puzzle has been started
+    public bool puzzleCompleted = false;
+    private bool puzzleActive = false;
     private SwitchInteractable firstSwitch;
-    private SwitchInteractable secondSwitch;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         
@@ -20,9 +18,13 @@ public class puzzleOneManager : MonoBehaviour
     {
         if (puzzleCompleted == true)
         {
+
+
         }
         else
         {
+
+        
             if (puzzleActive)
             {
                 timer -= Time.deltaTime;
@@ -33,58 +35,37 @@ public class puzzleOneManager : MonoBehaviour
                 }
             }
         }
-        
     }
     void ResetPuzzle()
     {
         if (!allowReset)
         {
-            //Debug.Log("Reset not allowed.");
+            Debug.Log("Reset not allowed for button 2.");
             puzzleCompleted = true;
             return;
         }
         puzzleActive = false;
         puzzleCompleted = false;
-        firstSwitch = null;
-        secondSwitch = null;
     }
-    
-    public void allPuzzleComplete()
+    public void allPuzzlesComplete()
     {
 
-        if(firstSwitch != null && secondSwitch != null)
+        if (firstSwitch != null)
         {
             firstSwitch.allowReset = false;
-            secondSwitch.allowReset = false;
             firstSwitch.setLeverState();
-            secondSwitch.setLeverState();
+            firstSwitch.leverActive = true;
         }
-
     }
     public void SwitchPressed(SwitchInteractable switchLever)
     {
         if(!puzzleActive)
         {
             puzzleActive = true;
+            puzzleCompleted = true;
             timer = timeLimit;
             firstSwitch = switchLever;
-
-            //Debug.Log("Puzzle started! First switch: " + switchLever.switchId);
-        }
-        else
-        {
-            if (switchLever != firstSwitch)
-            {
-                Debug.Log("Puzzle completed successfully!");
-                puzzleCompleted = true;
-                secondSwitch = switchLever;
-                Invoke("ResetPuzzle", 4f);
-            }
-            else
-            {
-                Debug.Log("Same switch pressed again. Puzzle failed.");
-                ResetPuzzle();
-            }
+            Debug.Log("Puzzle 2 completed! third switch: " + switchLever.switchId);
         }
 
     }
