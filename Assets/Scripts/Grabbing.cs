@@ -61,12 +61,12 @@ public class Grabbing : MonoBehaviour
 
         if (playerIsClimbing)
         {
-            Debug.Log("this is climbing!");
+            //Debug.Log("this is climbing!");
         }
 
         if(playerMovement.canJump && !playerIsGrabbing)
         {
-            Debug.Log("Stopped!");
+            //Debug.Log("Stopped!");
             if (!wasLastActPush)
             {
                 playerRb.linearVelocity = Vector3.zero;
