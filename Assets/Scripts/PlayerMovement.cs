@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.layer == 6)
+        if (collision.gameObject.layer == 6 || collision.gameObject.layer == 7)
 
             //rb.linearVelocity = Vector3.zero;
             canJump = true;
@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.layer == 6)
+        if (collision.gameObject.layer == 6 || collision.gameObject.layer == 7)
 
             canJump = false;
     }
