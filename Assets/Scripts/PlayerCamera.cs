@@ -10,6 +10,7 @@ public class PlayerCamera : MonoBehaviour
 
     private void CameraLook()
     {
+        // Camera Rotation Logic
         float inputX = Input.GetAxis("Mouse X")*mouseSensitivity;
         float inputY = Input.GetAxis("Mouse Y")*mouseSensitivity;
 
@@ -22,10 +23,7 @@ public class PlayerCamera : MonoBehaviour
 
 
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
-
-
     {
         Cursor.lockState = CursorLockMode.Locked; // Locks cursor to screen center
         Cursor.visible = false; // Hides the cursor

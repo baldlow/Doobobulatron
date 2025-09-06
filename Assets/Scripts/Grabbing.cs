@@ -22,55 +22,56 @@ public class Grabbing : MonoBehaviour
     public Interactor interactor;
     public GameObject interactableObjectDetected = null;
 
+
+    
     public void OnTriggerStay(Collider other)
     {
+        // if the grabbing hitbox is touching a wall or an interactable, canGrab is set to true
         if (other.gameObject.layer == 6 || other.gameObject.layer == 7)
         {
             canGrab = true;
         }
-        if (other.gameObject.layer == 7) // true if hitting an interactable
+        if (other.gameObject.layer == 7) // if grab hitbox is touching an interactable, canUse is set to true.
         {
             canUse = true;
-            interactableObjectDetected = other.gameObject;
+            interactableObjectDetected = other.gameObject; // interactableObjectDetected is set to the object currently being collided with
         }
     }
     private void OnTriggerExit(Collider other)
     {
+        // when the grab hitbox stops touching a wall or an interactable, canGrab is set to false
         if (other.gameObject.layer == 6 || other.gameObject.layer == 7)
         {
             canGrab = false;
         }
         canUse = false;
-
     }
 
     private void Start()
     {
         playerMovement = playerRb.gameObject.GetComponent<PlayerMovement>();
-
     }
 
     private void Update()
     {
-        
+        //UI logic
         CanGrabUi.SetActive(canGrab && !canUse);
         CanPushUi.SetActive(playerMovement.canJump && !canGrab && !canUse);
         CanUseUi.SetActive(canUse);
-        //CanUseUi.SetActive();
 
+
+        // Hold down Left Mouse to pull yourself forward if there's something to grab
         if (Input.GetMouseButton(0) && canGrab)
         {
-            //Debug.Log("grabbing!");
             playerRb.AddForce(this.transform.forward * pullForce);
             playerRb.linearVelocity = Vector3.ClampMagnitude(playerRb.linearVelocity, maxSpeed);
-
         }
+        // If you can't grab something and click, the playerMovement script is checked for the canJump variable being true
+        // Hold down Left Mouse to jump off of a surface
         else if(Input.GetMouseButton(0) && !canGrab && playerMovement.canJump)
         {
             playerRb.AddForce(this.transform.forward * jumpForce);
-            //Debug.Log("Jumping");
             playerRb.linearVelocity = Vector3.ClampMagnitude(playerRb.linearVelocity, maxSpeed);
-
         }
         
     }
