@@ -6,6 +6,7 @@ public class puzzleOneManager : MonoBehaviour
     private float timer;
     private bool puzzleActive = false;
     public string firstLightSwitch;
+    private SwitchInteractable firstSwitch;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -30,19 +31,25 @@ public class puzzleOneManager : MonoBehaviour
     {
         puzzleActive = false;
         firstLightSwitch = null;
+        foreach(var switchObj in FindObjectsOfType<SwitchInteractable>())
+        {
+            switchObj.resetLever();
+        }
     }
-    public void SwitchPressed(string switchId)
+    public void SwitchPressed(SwitchInteractable switchLever)
     {
         if(!puzzleActive)
         {
             puzzleActive = true;
             timer = timeLimit;
-            firstLightSwitch = switchId;
-            Debug.Log("Puzzle started! First switch: " + firstLightSwitch);
+            /*firstLightSwitch = switchId;*/
+            firstSwitch = switchLever;
+
+            Debug.Log("Puzzle started! First switch: " + switchLever.switchId);
         }
         else
         {
-            if (switchId != firstLightSwitch)
+            if (switchLever != firstSwitch)
             {
                 Debug.Log("Puzzle completed successfully!");
                 ResetPuzzle();
