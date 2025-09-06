@@ -8,15 +8,17 @@ public class PlayerMovement : MonoBehaviour
     {
         // if the player's hitbox is touching a wall or an interactable object, canJump is set to true
         if (collision.gameObject.layer == 6 || collision.gameObject.layer == 7)
-
+        {
             canJump = true;
+        }
     }
 
     // when the player stops touching a wall or an interactable object, canJump is set to false
     private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.layer == 6 || collision.gameObject.layer == 7)
-
+        {
             canJump = false;
+        }
     }
 }

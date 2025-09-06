@@ -21,7 +21,9 @@ public class Grabbing : MonoBehaviour
     PlayerMovement playerMovement;
     public Interactor interactor;
     public GameObject interactableObjectDetected = null;
-
+    public bool playerIsGrabbing = false;
+    public bool playerIsClimbing = false;
+    public bool wasLastActPush = false;
 
     
     public void OnTriggerStay(Collider other)
@@ -54,6 +56,23 @@ public class Grabbing : MonoBehaviour
 
     private void Update()
     {
+        playerIsGrabbing = (Input.GetMouseButton(0) && canGrab);
+        playerIsClimbing = playerMovement.canJump && playerIsGrabbing;
+
+        if (playerIsClimbing)
+        {
+            Debug.Log("this is climbing!");
+        }
+
+        if(playerMovement.canJump && !playerIsGrabbing)
+        {
+            Debug.Log("Stopped!");
+            if (!wasLastActPush)
+            {
+                playerRb.linearVelocity = Vector3.zero;
+            }
+        }
+
         //UI logic
         CanGrabUi.SetActive(canGrab && !canUse);
         CanPushUi.SetActive(playerMovement.canJump && !canGrab && !canUse);
@@ -61,15 +80,19 @@ public class Grabbing : MonoBehaviour
 
 
         // Hold down Left Mouse to pull yourself forward if there's something to grab
-        if (Input.GetMouseButton(0) && canGrab)
+        if (playerIsGrabbing)
         {
+            wasLastActPush = false;
             playerRb.AddForce(this.transform.forward * pullForce);
             playerRb.linearVelocity = Vector3.ClampMagnitude(playerRb.linearVelocity, maxSpeed);
+
+            
         }
         // If you can't grab something and click, the playerMovement script is checked for the canJump variable being true
         // Hold down Left Mouse to jump off of a surface
         else if(Input.GetMouseButton(0) && !canGrab && playerMovement.canJump)
         {
+            wasLastActPush = true;
             playerRb.AddForce(this.transform.forward * jumpForce);
             playerRb.linearVelocity = Vector3.ClampMagnitude(playerRb.linearVelocity, maxSpeed);
         }

@@ -2,10 +2,17 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
 {
-    public GameObject _cameraObj;
+    //public GameObject _cameraObj;
     public Transform player;
     public float mouseSensitivity = 2f;
     float cameraVerticalRotation = 0f;
+    public Grabbing grabbing;
+    Camera cam;
+    PlayerMovement playerMovement;
+
+    float fovDefault = 60f;
+    public float fovZoomOut = 90f;
+    public float t = 0.5f;
 
 
     private void CameraLook()
@@ -27,11 +34,24 @@ public class PlayerCamera : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked; // Locks cursor to screen center
         Cursor.visible = false; // Hides the cursor
+
+        cam = GetComponent<Camera>();
+        playerMovement = player.GetComponent<PlayerMovement>();
+
+        fovDefault = cam.fieldOfView;
     }
 
     // Update is called once per frame
     void Update()
     {
         CameraLook();
+        if (playerMovement.canJump)
+        {
+            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, fovZoomOut, t);
+        }
+        else
+        {
+            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, fovDefault, t);
+        }
     }
 }
