@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2915940779057301052}
   - component: {fileID: 5335111275838824553}
   - component: {fileID: 5035541366634891738}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -168,7 +168,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactor
   InteractorSource: {fileID: 2809400862473808731}
-  InteractRange: 0
+  interactRange: 5
+  grabbing: {fileID: 0}
 --- !u!1 &875694582922007251
 GameObject:
   m_ObjectHideFlags: 0
@@ -529,7 +530,7 @@ GameObject:
   - component: {fileID: 1469413934422404575}
   - component: {fileID: 6525023731154532791}
   - component: {fileID: 1866585509856286743}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -627,7 +628,7 @@ GameObject:
   - component: {fileID: 4289020332287701475}
   - component: {fileID: 4163807346416240915}
   - component: {fileID: 1302700654817793119}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -945,7 +946,7 @@ GameObject:
   - component: {fileID: 3501962091472130357}
   - component: {fileID: 7253075324615219140}
   - component: {fileID: 3966184074275194251}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: GRABHITBOX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1067,6 +1068,7 @@ MonoBehaviour:
   CanPushUi: {fileID: 4482654734856455500}
   CanUseUi: {fileID: 5438191740163315401}
   interactor: {fileID: 5035541366634891738}
+  interactableObjectDetected: {fileID: 0}
 --- !u!54 &3966184074275194251
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1183,7 +1185,7 @@ GameObject:
   - component: {fileID: 3870463925555754716}
   - component: {fileID: 8244831507309028392}
   - component: {fileID: 3071220587137214787}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
