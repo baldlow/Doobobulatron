@@ -7,9 +7,10 @@ public class gameStateManager : MonoBehaviour
     public taskTwoMangager puzzleController2;
     public bool gameDone = false;
     public terminalInteractable terminal1; // reference to terminal to disable interaction when game is done
+
+
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -27,10 +28,11 @@ public class gameStateManager : MonoBehaviour
                     {
                         terminal1.updateTasksCompleted();
                         Debug.Log("did task one");
+                        //door1.SetActive(true);
 
                     }
                     // Add game completion logic here
-                    
+
                 }
             }
             if(puzzleController2 != null)
