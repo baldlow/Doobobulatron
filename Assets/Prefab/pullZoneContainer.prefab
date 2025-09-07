@@ -26,7 +26,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -18.5, y: 1.29208, z: 1.37146}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3606, y: 1, z: 0.79919}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3501475240830012040}
@@ -58,7 +58,7 @@ Transform:
   m_GameObject: {fileID: 8103563460114711599}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.224, y: -0.57208, z: 4.47424}
+  m_LocalPosition: {x: 11.224, y: 0.62, z: 2.239}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -73,8 +73,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3501475240830012040}
-  - component: {fileID: 2585558963329414197}
   - component: {fileID: 3377721388054411050}
+  - component: {fileID: 6492517192769836780}
   m_Layer: 0
   m_Name: pullZone
   m_TagString: Untagged
@@ -91,14 +91,29 @@ Transform:
   m_GameObject: {fileID: 8303477947850105590}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.8409996, y: -0.32708007, z: 5.95954}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 1.21, y: 0.728, z: 2.275}
+  m_LocalScale: {x: 4.3915944, y: 2.6656852, z: -2.212596}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 262151150388999762}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &2585558963329414197
-SphereCollider:
+--- !u!114 &3377721388054411050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8303477947850105590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67c631c125273d54eb38e0fa47a28c39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PullZone
+  pullTarget: {fileID: 6965595241356323183}
+  pullForce: 15
+  doorOpen: 1
+--- !u!65 &6492517192769836780
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -116,20 +131,5 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 3
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3377721388054411050
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8303477947850105590}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67c631c125273d54eb38e0fa47a28c39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PullZone
-  pullTarget: {fileID: 6965595241356323183}
-  pullForce: 15
-  doorOpen: 1
