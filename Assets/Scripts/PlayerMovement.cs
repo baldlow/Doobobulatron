@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public bool canJump;
+    public Respawn respawn;
 
     private void OnCollisionStay(Collision collision)
     {
@@ -29,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.layer == 9)
         {
             Debug.Log("im dead af");
+            respawn.Die();
         }
     }
 }
