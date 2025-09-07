@@ -16,7 +16,7 @@ public class Interactor : MonoBehaviour
         // If presssing E and the grabbing script detects a usable object
         if (Input.GetKeyDown(KeyCode.E) && grabbing.canUse)
         {
-            Debug.Log("pressed E");
+            //Debug.Log("pressed E");
 
             // Checks if the object selected has a script that is interactable
                 if (grabbing.interactableObjectDetected.TryGetComponent(out IInteractable interactObj))
