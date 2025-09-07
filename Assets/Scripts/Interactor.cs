@@ -11,22 +11,14 @@ public class Interactor : MonoBehaviour
     public float interactRange = 5f;
     public Grabbing grabbing;
     
-
-
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
+        // If presssing E and the grabbing script detects a usable object
         if (Input.GetKeyDown(KeyCode.E) && grabbing.canUse)
         {
             Debug.Log("pressed E");
 
+            // Checks if the object selected has a script that is interactable
                 if (grabbing.interactableObjectDetected.TryGetComponent(out IInteractable interactObj))
                 {
                     interactObj.Interact();
