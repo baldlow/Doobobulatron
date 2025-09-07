@@ -21,4 +21,14 @@ public class PlayerMovement : MonoBehaviour
             canJump = false;
         }
     }
+
+    // when player enters the collider of a damageable object, player dies
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == 9)
+        {
+            Debug.Log("im dead af");
+        }
+    }
 }
