@@ -23,10 +23,21 @@ public class terminalInteractable : MonoBehaviour, IInteractable
             if (!isActive)
             {
                 isActive = true;
-                taskTwoMangager1.ActivateTerminalA();
+                    if(taskTwoMangager1.terminalInteractable1 != null)
+                    {
+                        taskTwoMangager1.ActivateTerminalA();
+                    }
+                    else
+                    {
+                        Debug.Log("taskTwoManager is null");
+                    }
 
-            }
-            Debug.Log("Terminal interacted with, tasks completed: " + tasksCompleted);
+                }
+                else
+                {
+                    taskTwoMangager1.ActivateTerminalA();
+                }
+                    Debug.Log("Terminal interacted with, tasks completed: " + tasksCompleted);
             // close door to lever room
         }else if (tasksCompleted == 2)
         {

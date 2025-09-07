@@ -60,6 +60,7 @@ public class taskTwoMangager : MonoBehaviour
         {
             timer = timerDuration;
             timerRunning = true;
+            Debug.Log("Timer started! You have " + timerDuration + " seconds to activate Terminal B.");
         }else if (terminalInteractable2.isActive)
         {
             Debug.Log("Both terminals activated! Puzzle completed.");
@@ -74,6 +75,7 @@ public class taskTwoMangager : MonoBehaviour
         if (timerRunning)
         {
             terminalInteractable2.isActive = true;
+            Debug.Log("Terminal B activated!");
 
         }
         else {             Debug.Log("Activate Terminal A first."); }
