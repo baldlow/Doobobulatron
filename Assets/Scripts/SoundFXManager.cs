@@ -59,4 +59,4 @@ public class SoundFXManager : MonoBehaviour
         Destroy(audioSource.gameObject, clipLength);
     }
 }
-}
+
