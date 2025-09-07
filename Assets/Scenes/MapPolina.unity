@@ -25443,6 +25443,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7284960299470715974, guid: 7df6b59ce71bec145a8f22b155e081ce, type: 3}
   m_PrefabInstance: {fileID: 1597055147}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
 --- !u!1001 &1604486270
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25500,6 +25501,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e26f3ddfd340ef499b023368b2ed06d, type: 3}
+=======
+>>>>>>> Stashed changes
 --- !u!1001 &1606529036
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32719,7 +32722,10 @@ MeshCollider:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+<<<<<<< Updated upstream
   - {fileID: 1604486270}
+=======
+>>>>>>> Stashed changes
   - {fileID: 1198241748}
   - {fileID: 1886667813}
   - {fileID: 849118825}
