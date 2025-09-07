@@ -13,9 +13,12 @@ public class taskTwoMangager : MonoBehaviour
     public terminalInteractable terminalInteractable1;
     public terminalInteractable terminalInteractable2;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public GameObject door1;
+    public GameObject door2;
+
     void Start()
     {
-
+        door1.SetActive(false);
     }
 
     // Update is called once per frame
@@ -61,7 +64,11 @@ public class taskTwoMangager : MonoBehaviour
             timer = timerDuration;
             timerRunning = true;
             Debug.Log("Timer started! You have " + timerDuration + " seconds to activate Terminal B.");
-        }else if (terminalInteractable2.isActive)
+            door2.SetActive(false);
+            door1.SetActive(true);
+
+        }
+        else if (terminalInteractable2.isActive)
         {
             Debug.Log("Both terminals activated! Puzzle completed.");
             puzzleCompleted = true;
